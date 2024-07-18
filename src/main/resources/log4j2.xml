@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%level: %m%throwable{short.message}%n">
+			</PatternLayout>
+		</Console>
+
+		<File name="Debug" fileName="debug.log" append="false" immediateFlush="true">
+			<PatternLayout
+				pattern="%date{mm:ss:SSS} %file %thread : %m %throwable{3}%n">
+			</PatternLayout>
+		</File>
+	</Appenders>
+
+	<Loggers>
+		<Root level="ALL">
+			<AppenderRef ref="Console" level="INFO" />
+			<AppenderRef ref="Debug" level="ALL" />
+		</Root>
+		
+		<Logger name="edu.usfca.cs272.MTFileSearcher" level="ALL" additivity="false">
+			<AppenderRef ref="Debug"/>
+		</Logger>
+		
+		<Logger name="edu.usfca.cs272.MTIndexBuilder" level="ALL" additivity="false">
+			<AppenderRef ref="Debug"/>
+		</Logger>
+		
+		<Logger name="edu.usfca.cs272.ThreadSafeInvertedIndex" level="ALL" additivity="false">
+			<AppenderRef ref="Debug"/>
+		</Logger>
+	</Loggers>
+</Configuration>
